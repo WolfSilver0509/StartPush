@@ -20,7 +20,9 @@
 </template>
 
 <script>
+
 export default {
+    
   data: function () {
     return {
       id: null,

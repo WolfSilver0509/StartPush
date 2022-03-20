@@ -2,6 +2,7 @@
   <div class="card">
     <h1 class="card__title">Mon Espace</h1>
     <p class="card__subtitle">Ma page de profil se constitue de :</p>
+    <div class="imagePP"> <img :src="image" /> </div>
     <p><b class="term">Pseudo :</b> {{ pseudo }}</p>
     <p><b class="term">Email :</b> {{ email }}</p>
 
@@ -26,21 +27,35 @@
 export default {
   name: "Profile",
   data: function () {
+    
     return {
       userId: null,
       isAdmin: false,
       email: "",
       pseudo: "",
+     
     };
   },
   created() {
     this.isAdmin = localStorage.getItem("isAdmin") == "true" ? true : false;
     console.log(this.isAdmin);
     this.userId = Number(localStorage.getItem("userId"));
+
+    fetch(process.env.VUE_APP_BASE_API + "user/" + localStorage.getItem("userId"), {
+      method: "GET",
+      headers: {
+        Authorization: "bearer: " + localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        return response.json();
+        
+      })
   },
   mounted() {
     this.email = localStorage.getItem("email");
     this.pseudo = localStorage.getItem("pseudo");
+
   },
   methods: {
     deleteUser() {
