@@ -6,7 +6,7 @@
   <div v-if="loading">En Chargement . . .</div>
   <div v-else class="form-row-column">
     <div class="form-row__input">
-      <label for="pseudo"> Titre </label>
+      <label for="pseudo"> Pseudo </label>
       <input id="pseudo" v-model="pseudoView" type="pseudo" />
     </div>
     <div class="form-row__input">
@@ -14,7 +14,7 @@
         <input type="file" @change="updateImagePost2" />
         <img v-bind:src="oldImagePP" alt="Ancienne image User" />
       </div>
-      <button @click="updatePost()" class="button">Mettre à jour</button>
+      <button @click="updateUser()" class="button">Mettre à jour</button>
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default {
       });
   },
   methods: {
-    updatePost() {
+    updateUser() {
       let formData = new FormData();
       formData.append("pseudo", this.pseudoView);
       if (this.userImagePP != null) {
