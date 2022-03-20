@@ -6,8 +6,8 @@
   <div v-if="loading">En Chargement . . .</div>
   <div v-else class="form-row-column">
     <div class="form-row__input">
-      <label for="title"> Titre </label>
-      <input id="title" v-model="pseudoView" type="title" />
+      <label for="pseudo"> Titre </label>
+      <input id="pseudo" v-model="pseudoView" type="pseudo" />
     </div>
     <div class="form-row__input">
       <div>
@@ -44,7 +44,7 @@ export default {
       })
       .then((data) => {
         console.log(data);
-        this.pseudoView = data.title;
+        this.pseudoView = data.pseudo;
         this.oldImagePP = data.image;
         this.id = data.id;
         this.loading = false;
@@ -58,7 +58,7 @@ export default {
   methods: {
     updatePost() {
       let formData = new FormData();
-      formData.append("title", this.pseudoView);
+      formData.append("pseudo", this.pseudoView);
       if (this.userImagePP != null) {
         formData.append("image", this.userImagePP);
       }
