@@ -8,6 +8,7 @@ const User = mm.getModel("User");
 
 const bcrypt = require('bcrypt');
 
+const fs = require("fs");
 
 exports.getUser = (req, res, next) => {
     console.log('user demandé : ' + req.params.id);
@@ -41,17 +42,17 @@ exports.updateUser = async (req, res, next) => {
 
             };
 
-            // if(req.file){
-            //     if (user.image){
-            //         const filename = user.image.split("/images/")[1];
-            //         fs.unlink(`images/${filename}`,()=>{
-            //          console.log("Image SUpp");
-            //         })
-            //     }
-            // }
-            // userObject.image=`${req.protocol}://${req.get("host")}/images/${
-            //     req.file.filename
-            //   }`;
+            if(req.file){
+                if (user.image){
+                    const filename = user.image.split("/images/")[1];
+                    fs.unlink(`images/${filename}`,()=>{
+                     console.log("Image SUpp");
+                    })
+                }
+            }
+            userObject.image=`${req.protocol}://${req.get("host")}/images/${
+                req.file.filename
+              }`;
             console.log(userObject);
             User.update(userObject,{ where: {id: req.params.id}})
                 .then(() => {

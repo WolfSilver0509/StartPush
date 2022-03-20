@@ -5,12 +5,13 @@ const mm = new ModelManager()
 const UserModel = mm.getModel("User")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const fs = require("fs");
 
 exports.signup = (req, res, next) => {  // async
    console.log("ici avant le hash");
    let fileName = null;
-  if (req.file != null) {
+   if (req.file != null) {
     fileName = `${req.protocol}://${req.get("host")}/images/${
       req.file.filename
     }`;

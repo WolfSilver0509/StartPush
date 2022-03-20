@@ -8,8 +8,15 @@ const routes = [
   },
   {
     name: "profile",
-    path: "/profile",
+    path: "/profile", 
     component: () => import("@/views/Profile.vue"),
+    meta: { needConnect: true },
+  },
+  {
+    name: "userUpdate",
+    path: "/userUpdate", 
+    component: () => import("@/views/userUpdate.vue"),
+    meta: { needConnect: true },
   }
 ];
 
