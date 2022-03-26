@@ -16,7 +16,8 @@ exports.getUser = (req, res, next) => {
         .then(user => {
             
             let userInfo = {
-                pseudo: user.pseudo
+                pseudo: user.pseudo,
+                image : user.image
 
             }
             res.status(200).json({userInfo})
@@ -49,10 +50,10 @@ exports.updateUser = async (req, res, next) => {
                      console.log("Image SUpp");
                     })
                 }
+                userObject.image=`${req.protocol}://${req.get("host")}/images/${
+                    req.file.filename
+                  }`;
             }
-            userObject.image=`${req.protocol}://${req.get("host")}/images/${
-                req.file.filename
-              }`;
             console.log(userObject);
             User.update(userObject,{ where: {id: req.params.id}})
                 .then(() => {

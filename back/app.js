@@ -43,10 +43,12 @@ try {
 // Routes
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
+const projetRoute = require('./routes/projet');
 
 
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use('/api/projet', projetRoute);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

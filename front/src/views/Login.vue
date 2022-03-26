@@ -81,6 +81,7 @@ export default {
       email: "",
       pseudo: "",
       password: "",
+      image:"",
       errors: [],
       error:"",
       success: "",
@@ -164,6 +165,7 @@ export default {
               localStorage.setItem("token", response.token);
               localStorage.setItem("pseudo", response.pseudo);
               localStorage.setItem("email", response.email);
+              localStorage.setItem("image",response.image);
               
               this.$router.push("/profile");
  

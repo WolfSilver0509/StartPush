@@ -1,6 +1,6 @@
 <template>
-  <div class="image">
-    <img src="../assets/logo.png" />
+  <div class="imageLogo">
+    <img src="../assets/Logomyd.png" />
   </div>
   <h2 class="card__title3">Modifier votre profil:</h2>
   <div v-if="loading">En Chargement . . .</div>
@@ -110,5 +110,10 @@ export default {
   text-align: start;
   font-weight: 600;
   color: white;
+}
+.imageLogo{
+  display: flex;
+  justify-content: end;
+  width: 20%;
 }
 </style>

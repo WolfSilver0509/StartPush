@@ -14,8 +14,14 @@ const routes = [
   },
   {
     name: "userUpdate",
-    path: "/userUpdate", 
+    path: "/userUpdate/:id(\\d+)", 
     component: () => import("@/views/userUpdate.vue"),
+    meta: { needConnect: true },
+  },
+  {
+    name: "projets",
+    path: "/projets", 
+    component: () => import("@/views/Projets.vue"),
     meta: { needConnect: true },
   }
 ];
@@ -58,3 +64,4 @@ router.beforeEach((to, from, next) => {
   }
 });
 export default router;
+

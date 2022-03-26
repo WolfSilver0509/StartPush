@@ -4,6 +4,7 @@
     <p class="card__subtitle">Ma page de profil se constitue de :</p>
     <div class="imagePP"> <img :src="image" /> </div>
     <p><b class="term">Pseudo :</b> {{ pseudo }}</p>
+    <p><b class="term">image  :</b> {{ image }}</p>
     <p><b class="term">Email :</b> {{ email }}</p>
 
     <div class="placementPencil">
@@ -12,7 +13,7 @@
 
 
     <div class="form-row">
-      <a v-if="Boolean(isAdmin)" href="/forum" class="buttonDeleteUser"> Boutique </a>
+      <a v-if="Boolean(isAdmin)" href="/projets" class="buttonDeleteUser"> Projets </a>
       <button @click="deleteUser()" class="button2">
         Supprimer mon compte
       </button>
@@ -33,12 +34,13 @@ export default {
       isAdmin: false,
       email: "",
       pseudo: "",
+      image: "",
      
     };
   },
   created() {
     this.isAdmin = localStorage.getItem("isAdmin") == "true" ? true : false;
-    console.log(this.isAdmin);
+    
     this.userId = Number(localStorage.getItem("userId"));
 
     fetch(process.env.VUE_APP_BASE_API + "user/" + localStorage.getItem("userId"), {
@@ -51,10 +53,13 @@ export default {
         return response.json();
         
       })
+    
   },
   mounted() {
     this.email = localStorage.getItem("email");
     this.pseudo = localStorage.getItem("pseudo");
+
+    
 
   },
   methods: {
@@ -132,4 +137,4 @@ p {
   }
 }
 </style>
->
+
